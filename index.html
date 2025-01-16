@@ -280,9 +280,9 @@
         <h2>Contact Me</h2>
         <div class="contact-form">
             <form id="contact-form" action="https://formspree.io/f/xvggnodz" method="POST" onsubmit="submitForm(event)">
-                <input type="text" name="name" id="name" placeholder="Your Name" required aria-label="Your Name">
-                <input type="email" name="email" id="email" placeholder="Your Email" required aria-label="Your Email">
-                <textarea name="message" id="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+                <input type="text" name="name" id="name" placeholder="Your Name" required>
+                <input type="email" name="email" id="email" placeholder="Your Email" required>
+                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
             <div class="loading" id="loading">Submitting...</div>
@@ -297,7 +297,7 @@
         </p>
     </footer>
 
-    <script>
+  <script>
         function submitForm(event) {
             event.preventDefault();
             document.getElementById("loading").style.display = "block";
@@ -308,7 +308,7 @@
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.href = 'thank-you.html';
+                    window.location.href = 'thank-you.html';  // Redirect to thank-you page after successful submission
                 } else {
                     alert('Something went wrong. Please try again.');
                 }
@@ -321,6 +321,5 @@
             });
         }
     </script>
-
 </body>
 </html>
