@@ -279,11 +279,11 @@
     <section>
         <h2>Contact Me</h2>
         <div class="contact-form">
-            <form id="contact-form" action="https://formspree.io/f/xvggnodz" method="POST" onsubmit="submitForm(event)">
-                <input type="text" name="name" id="name" placeholder="Your Name" required>
-                <input type="email" name="email" id="email" placeholder="Your Email" required>
-                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
+            <form id="contact-form" action="https://formspree.io/f/xvggnodz" method="POST" onsubmit="handleFormSubmit(event)">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
             </form>
             <div class="loading" id="loading">Submitting...</div>
         </div>
@@ -297,29 +297,31 @@
         </p>
     </footer>
 
-  <script>
-        function submitForm(event) {
-            event.preventDefault();
-            document.getElementById("loading").style.display = "block";
-            const form = document.getElementById("contact-form");
-            fetch(form.action, {
-                method: "POST",
-                body: new FormData(form),
-            })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = 'thank-you.html';  // Redirect to thank-you page after successful submission
-                } else {
-                    alert('Something went wrong. Please try again.');
-                }
-            })
-            .catch(error => {
-                alert('Error: ' + error);
-            })
-            .finally(() => {
-                document.getElementById("loading").style.display = "none";
-            });
-        }
-    </script>
+<script>
+    function handleFormSubmit(event) {
+        event.preventDefault();  // Prevents the default form submission action
+
+        // Send the form data using Fetch API
+        fetch('https://formspree.io/f/xvggnodz', {
+            method: 'POST',
+            body: new FormData(event.target)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Redirect to the Thank You page after successful submission
+                window.location.href = "thank-you.html";  // This redirects to the Thank You page
+            } else {
+                // Handle the error if needed
+                alert("There was an error submitting the form. Please try again.");
+            }
+        })
+        .catch(error => {
+            // Log the error if the request fails
+            console.error('Error:', error);
+            alert("There was an error submitting the form. Please try again.");
+        });
+    }
+</script>
+
 </body>
 </html>
