@@ -123,6 +123,27 @@
             background-color: #f1c40f;
         }
 
+        /* Soft Skills Styling */
+        .soft-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            text-align: left;
+        }
+
+        .soft-skills li {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .soft-skills li:hover {
+            transform: translateY(-5px);
+        }
+
         /* Mobile responsiveness */
         @media only screen and (max-width: 768px) {
             header h1 {
@@ -143,12 +164,6 @@
             }
         }
 
-        .loading {
-            display: none;
-            text-align: center;
-            font-size: 18px;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
@@ -185,15 +200,85 @@
     </section>
 
     <section>
+        <h2>Education</h2>
+        <p><strong>Bachelor’s Degree – University of Professional Studies</strong></p>
+    </section>
+
+    <section>
+        <h2>Certifications</h2>
+        <h3>Completed Certifications</h3>
+        <ul>
+            <li>CompTIA Security+ Certified</li>
+            <li>CompTIA Network+</li>
+            <li>AWS Certified Cloud Practitioner</li>
+        </ul>
+
+        <h3>In Progress</h3>
+        <ul>
+            <li>Certified Ethical Hacker (CEH)</li>
+            <li>CompTIA Cybersecurity Analyst (CySA+)</li>
+            <li>Azure Security Certification</li>
+            <li>HashiCorp Terraform Certification</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Soft Skills</h2>
+        <ul class="soft-skills">
+            <li>Effective Communication</li>
+            <li>Problem-Solving</li>
+            <li>Team Collaboration</li>
+            <li>Adaptability</li>
+            <li>Time Management</li>
+            <li>Attention to Detail</li>
+            <li>Critical Thinking</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <ul>
+            <li><strong>Cybersecurity Tools:</strong> Wireshark, Kali Linux, Nessus, Metasploit, Splunk, IDS/IPS, NIST, MITRE ATT&CK</li>
+            <li><strong>Cloud Security:</strong> AWS (IAM, VPC, EC2, RDS), Cloud Security Best Practices</li>
+            <li><strong>Networking & Security:</strong> Firewall Management, SIEM, Incident Response</li>
+            <li><strong>Operating Systems:</strong> Windows, Linux</li>
+            <li><strong>Programming & Scripting:</strong> Bash, Python</li>
+            <li><strong>Tools:</strong> Jenkins, Git, Docker, Kubernetes, Ansible</li>
+            <li><strong>Others:</strong> Active Directory, MS Office, Azure, SCCM, SQL, ServiceNow, SharePoint</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Linux Projects</h2>
+        <ul>
+            <li><strong>Linux Command Usage & File Management:</strong> Gained experience with basic commands (mkdir, cp, mv, touch) and file management.</li>
+            <li><strong>System Hardening:</strong> Managed file permissions and user accounts using Linux commands (chmod, chown, usermod).</li>
+            <li><strong>Networking & Troubleshooting:</strong> Configured network settings and troubleshot connectivity issues using commands (ifconfig, ping, netstat).</li>
+            <li><strong>Automated Website Setup:</strong> Automated WordPress installation and configuration using shell scripts.</li>
+            <li><strong>Ansible for Security Automation:</strong> Automated the deployment of security patches and updates across Linux systems using Ansible.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Cybersecurity Projects</h2>
+        <ul>
+            <li><strong>Vulnerability Assessment:</strong> Conducted vulnerability assessments using Nessus to identify and report potential security risks.</li>
+            <li><strong>Penetration Testing:</strong> Performed penetration testing with Kali Linux tools like Nmap, Metasploit, and Burp Suite.</li>
+            <li><strong>Traffic Analysis with Wireshark:</strong> Analyzed network traffic to identify anomalies and potential security threats.</li>
+            <li><strong>SIEM Analysis:</strong> Set up and monitored security alerts and incidents using Splunk.</li>
+            <li><strong>AWS Security Best Practices:</strong> Implemented security best practices such as IAM roles, VPC security groups, and more to secure AWS environments.</li>
+        </ul>
+    </section>
+
+    <section>
         <h2>Contact Me</h2>
         <div class="contact-form">
-            <form id="contact-form" action="https://formspree.io/f/xvggnodz" method="POST" onsubmit="handleFormSubmit(event)">
+            <form action="https://formspree.io/f/xvggnodz" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
-            <div class="loading" id="loading">Submitting...</div>
         </div>
     </section>
 
@@ -204,35 +289,6 @@
             <a href="https://github.com/steph170">GitHub</a>
         </p>
     </footer>
-
-    <script>
-        function handleFormSubmit(event) {
-            event.preventDefault();  // Prevents the default form submission action
-
-            // Show loading indicator
-            document.getElementById("loading").style.display = "block";
-
-            // Send the form data using Fetch API
-            fetch('https://formspree.io/f/xvggnodz', {
-                method: 'POST',
-                body: new FormData(event.target)
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Redirect to the Thank You page after successful submission
-                    window.location.href = "thank-you.html";  // This redirects to the Thank You page
-                } else {
-                    // Handle the error if needed
-                    alert("There was an error submitting the form. Please try again.");
-                }
-            })
-            .catch(error => {
-                // Log the error if the request fails
-                console.error('Error:', error);
-                alert("There was an error submitting the form. Please try again.");
-            });
-        }
-    </script>
 
 </body>
 </html>
